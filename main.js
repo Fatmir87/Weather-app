@@ -30,9 +30,7 @@ $( function() {
 
 $(document).ready(function(){
       
-  
-
-      $("#getWeatherForcast").click(function(){
+      var callback = function(){
                 
             var city = $("#city").val();
             var key  = '4de3768c62b67fe359758977a3efc069';
@@ -65,6 +63,12 @@ $(document).ready(function(){
               }
 
             })
-
+      };
+      // Allows the user to call the weather function with the Enter key or the press of the button
+      $("#city").keypress(function() {
+        if (event.which == 13) callback();
       });
+
+      $("#getWeatherForcast").click(callback);
+
     });
